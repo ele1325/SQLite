@@ -73,8 +73,9 @@ public class AddCountryActivity extends Activity implements OnClickListener {
 
                 final String name = subjectEditText.getText().toString();
                 final String desc = descEditText.getText().toString();
+                final String date = dateEditText.getText().toString();
 
-                dbManager.insert(name, desc);
+                dbManager.insert(name, desc, date);
 
                 Intent main = new Intent(AddCountryActivity.this, CountryListActivity.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

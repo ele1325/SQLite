@@ -22,9 +22,9 @@ public class CountryListActivity extends AppCompatActivity {
     private SimpleCursorAdapter adapter;
 
     final String[] from = new String[] { DatabaseHelper._ID,
-            DatabaseHelper.SUBJECT, DatabaseHelper.DESC };
+            DatabaseHelper.SUBJECT, DatabaseHelper.DESC, DatabaseHelper.DATE };
 
-    final int[] to = new int[] { R.id.id, R.id.title, R.id.desc };
+    final int[] to = new int[] { R.id.id, R.id.title, R.id.desc, R.id.date };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,15 +52,18 @@ public class CountryListActivity extends AppCompatActivity {
                 TextView idTextView = (TextView) view.findViewById(R.id.id);
                 TextView titleTextView = (TextView) view.findViewById(R.id.title);
                 TextView descTextView = (TextView) view.findViewById(R.id.desc);
+                TextView dateTextView = (TextView) view.findViewById(R.id.date);
 
                 String id = idTextView.getText().toString();
                 String title = titleTextView.getText().toString();
                 String desc = descTextView.getText().toString();
+                String date = dateTextView.getText().toString();
 
                 Intent modify_intent = new Intent(getApplicationContext(), ModifyCountryActivity.class);
                 modify_intent.putExtra("title", title);
                 modify_intent.putExtra("desc", desc);
                 modify_intent.putExtra("id", id);
+                modify_intent.putExtra("date", date);
 
                 startActivity(modify_intent);
             }

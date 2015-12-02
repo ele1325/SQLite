@@ -14,8 +14,9 @@ import android.widget.EditText;
 public class ModifyCountryActivity extends Activity implements OnClickListener {
 
     private EditText titleText;
-    private Button updateBtn, deleteBtn;
     private EditText descText;
+    private EditText dateText;
+    private Button updateBtn, deleteBtn;
 
     private long _id;
 
@@ -34,7 +35,7 @@ public class ModifyCountryActivity extends Activity implements OnClickListener {
 
         titleText = (EditText) findViewById(R.id.subject_edittext);
         descText = (EditText) findViewById(R.id.description_edittext);
-
+        dateText = (EditText) findViewById(R.id.date_edittext);
         updateBtn = (Button) findViewById(R.id.btn_update);
         deleteBtn = (Button) findViewById(R.id.btn_delete);
 
@@ -42,12 +43,13 @@ public class ModifyCountryActivity extends Activity implements OnClickListener {
         String id = intent.getStringExtra("id");
         String name = intent.getStringExtra("title");
         String desc = intent.getStringExtra("desc");
+        String date = intent.getStringExtra("date");
 
         _id = Long.parseLong(id);
 
         titleText.setText(name);
         descText.setText(desc);
-
+        dateText.setText(date);
         updateBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
     }
@@ -58,8 +60,9 @@ public class ModifyCountryActivity extends Activity implements OnClickListener {
             case R.id.btn_update:
                 String title = titleText.getText().toString();
                 String desc = descText.getText().toString();
+                String date = dateText.getText().toString();
 
-                dbManager.update(_id, title, desc);
+                dbManager.update(_id, title, desc, date);
                 this.returnHome();
                 break;
 
