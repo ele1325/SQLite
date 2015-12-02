@@ -20,12 +20,12 @@ import java.util.GregorianCalendar;
 public class AddCountryActivity extends Activity implements OnClickListener {
 
     private Button addTodoBtn;
-    private EditText subjectEditText;
-    private EditText descEditText;
+    private EditText addEditText1;
+    private EditText addEditText2;
+    private EditText dateEditText;
 
     private DBManager dbManager;
     private TextView textDate;
-    private EditText dateEditText;
     private Button doSetDate;
     private DatePickerDialog datePickerDialog;
     public int mYear;
@@ -40,9 +40,9 @@ public class AddCountryActivity extends Activity implements OnClickListener {
 
         setContentView(R.layout.activity_add_record);
 
-        subjectEditText = (EditText) findViewById(R.id.subject_edittext);
-        descEditText = (EditText) findViewById(R.id.description_edittext);
-        dateEditText = (EditText) findViewById(R.id.date_edittext);
+        addEditText1 = (EditText) findViewById(R.id.add_edittext1);
+        addEditText2 = (EditText) findViewById(R.id.add_edittext2);
+        dateEditText = (EditText) findViewById(R.id.add_date_edittext);
         addTodoBtn = (Button) findViewById(R.id.add_record);
 
         GregorianCalendar calendar = new GregorianCalendar();
@@ -71,11 +71,11 @@ public class AddCountryActivity extends Activity implements OnClickListener {
         switch (v.getId()) {
             case R.id.add_record:
 
-                final String name = subjectEditText.getText().toString();
-                final String desc = descEditText.getText().toString();
+                final String item1 = addEditText1.getText().toString();
+                final String item2 = addEditText2.getText().toString();
                 final String date = dateEditText.getText().toString();
 
-                dbManager.insert(name, desc, date);
+                dbManager.insert(item1, item2, date);
 
                 Intent main = new Intent(AddCountryActivity.this, CountryListActivity.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

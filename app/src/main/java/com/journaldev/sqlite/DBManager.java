@@ -29,16 +29,16 @@ public class DBManager {
         dbHelper.close();
     }
 
-    public void insert(String name, String desc, String date) {
+    public void insert(String item1, String item2, String date) {
         ContentValues contentValue = new ContentValues();
-        contentValue.put(DatabaseHelper.SUBJECT, name);
-        contentValue.put(DatabaseHelper.DESC, desc);
+        contentValue.put(DatabaseHelper.ITEM1, item1);
+        contentValue.put(DatabaseHelper.ITEM2, item2);
         contentValue.put(DatabaseHelper.DATE, date);
         database.insert(DatabaseHelper.TABLE_NAME, null, contentValue);
     }
 
     public Cursor fetch() {
-        String[] columns = new String[] { DatabaseHelper._ID, DatabaseHelper.SUBJECT, DatabaseHelper.DESC, DatabaseHelper.DATE };
+        String[] columns = new String[] { DatabaseHelper._ID, DatabaseHelper.ITEM1, DatabaseHelper.ITEM2, DatabaseHelper.DATE };
 
         Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, columns, null, null, null, null, null);
         if (cursor != null) {
@@ -47,10 +47,10 @@ public class DBManager {
         return cursor;
     }
 
-    public int update(long _id, String name, String desc, String date) {
+    public int update(long _id, String item1, String item2, String date) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(DatabaseHelper.SUBJECT, name);
-        contentValues.put(DatabaseHelper.DESC, desc);
+        contentValues.put(DatabaseHelper.ITEM1, item1);
+        contentValues.put(DatabaseHelper.ITEM2, item2);
         contentValues.put(DatabaseHelper.DATE, date);
         int i = database.update(DatabaseHelper.TABLE_NAME, contentValues, DatabaseHelper._ID + " = " + _id, null);
         return i;

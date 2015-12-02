@@ -13,9 +13,9 @@ import android.widget.EditText;
 
 public class ModifyCountryActivity extends Activity implements OnClickListener {
 
-    private EditText titleText;
-    private EditText descText;
-    private EditText dateText;
+    private EditText modifyEditText1;
+    private EditText modifyEditText2;
+    private EditText modifyDateEditText;
     private Button updateBtn, deleteBtn;
 
     private long _id;
@@ -33,23 +33,23 @@ public class ModifyCountryActivity extends Activity implements OnClickListener {
         dbManager = new DBManager(this);
         dbManager.open();
 
-        titleText = (EditText) findViewById(R.id.subject_edittext);
-        descText = (EditText) findViewById(R.id.description_edittext);
-        dateText = (EditText) findViewById(R.id.date_edittext);
+        modifyEditText1 = (EditText) findViewById(R.id.modify_edittext1);
+        modifyEditText2 = (EditText) findViewById(R.id.modify_edittext2);
+        modifyDateEditText = (EditText) findViewById(R.id.modify_date_edittext);
         updateBtn = (Button) findViewById(R.id.btn_update);
         deleteBtn = (Button) findViewById(R.id.btn_delete);
 
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
-        String name = intent.getStringExtra("title");
-        String desc = intent.getStringExtra("desc");
+        String item1 = intent.getStringExtra("item1");
+        String item2 = intent.getStringExtra("item2");
         String date = intent.getStringExtra("date");
 
         _id = Long.parseLong(id);
 
-        titleText.setText(name);
-        descText.setText(desc);
-        dateText.setText(date);
+        modifyEditText1.setText(item1);
+        modifyEditText2.setText(item2);
+        modifyDateEditText.setText(date);
         updateBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
     }
@@ -58,9 +58,9 @@ public class ModifyCountryActivity extends Activity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_update:
-                String title = titleText.getText().toString();
-                String desc = descText.getText().toString();
-                String date = dateText.getText().toString();
+                String title = modifyEditText1.getText().toString();
+                String desc = modifyEditText2.getText().toString();
+                String date = modifyDateEditText.getText().toString();
 
                 dbManager.update(_id, title, desc, date);
                 this.returnHome();

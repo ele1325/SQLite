@@ -22,9 +22,9 @@ public class CountryListActivity extends AppCompatActivity {
     private SimpleCursorAdapter adapter;
 
     final String[] from = new String[] { DatabaseHelper._ID,
-            DatabaseHelper.SUBJECT, DatabaseHelper.DESC, DatabaseHelper.DATE };
+            DatabaseHelper.ITEM1, DatabaseHelper.ITEM2, DatabaseHelper.DATE };
 
-    final int[] to = new int[] { R.id.id, R.id.title, R.id.desc, R.id.date };
+    final int[] to = new int[] { R.id.id, R.id.textView1, R.id.textView2, R.id.date };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,19 +50,19 @@ public class CountryListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long viewId) {
                 TextView idTextView = (TextView) view.findViewById(R.id.id);
-                TextView titleTextView = (TextView) view.findViewById(R.id.title);
-                TextView descTextView = (TextView) view.findViewById(R.id.desc);
+                TextView textView1 = (TextView) view.findViewById(R.id.textView1);
+                TextView textView2 = (TextView) view.findViewById(R.id.textView2);
                 TextView dateTextView = (TextView) view.findViewById(R.id.date);
 
                 String id = idTextView.getText().toString();
-                String title = titleTextView.getText().toString();
-                String desc = descTextView.getText().toString();
+                String item1 = textView1.getText().toString();
+                String item2 = textView2.getText().toString();
                 String date = dateTextView.getText().toString();
 
                 Intent modify_intent = new Intent(getApplicationContext(), ModifyCountryActivity.class);
-                modify_intent.putExtra("title", title);
-                modify_intent.putExtra("desc", desc);
                 modify_intent.putExtra("id", id);
+                modify_intent.putExtra("item1", item1);
+                modify_intent.putExtra("item2", item2);
                 modify_intent.putExtra("date", date);
 
                 startActivity(modify_intent);
