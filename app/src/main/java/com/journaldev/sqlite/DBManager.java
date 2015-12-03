@@ -9,6 +9,9 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DBManager {
 
     private DatabaseHelper dbHelper;
@@ -45,6 +48,30 @@ public class DBManager {
             cursor.moveToFirst();
         }
         return cursor;
+    }
+
+    public ArrayList<Information> getAll() {
+        database = dbHelper.getReadableDatabase();
+        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, null, null, null, null, null, null, null);
+        ArrayList<Information> result = new ArrayList<Information>();
+
+        Information information;
+        if (cursor.getCount() > 0) {
+            for (int i = 0; i < cursor.getCount(); i++) {
+                cursor.moveToNext();
+                information = new Information();
+                information.iconId= cursor.getInt(0);
+                information.item1 = cursor.getString(1);
+                information.item2 = cursor.getString(2);
+                information.date = cursor.getString(3);
+
+                result.add(information);
+            }
+        }
+        cursor.close();
+        database.close();
+
+        return result;
     }
 
     public int update(long _id, String item1, String item2, String date) {
