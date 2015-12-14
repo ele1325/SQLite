@@ -90,7 +90,7 @@ public class CountryListActivity extends AppCompatActivity {
         String[] titles = {"item1","item2","item3","item4"};
         for (int i=0; i<(titles.length)+30 && i<(icons.length)+30; i++){
             Information current = new Information();
-            current.iconId=icons[i%4];
+            //current.sqlid=icons[i%4];
             //current.title=titles[i%4];
             current.item1= String.format("item%d", i);
             data.add(current);

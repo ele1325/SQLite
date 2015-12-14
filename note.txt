@@ -1,0 +1,30 @@
+2015/12/14
+-CountryListActivity¬°main
+-DBManagerªºgatAll()¨ú±o©Ò¥HSQLite¸ê®Æ¡A«ü©wµ¹ÅÜ¼ÆgetAllData¡A¦A³]©w¨ìMywAdapter
+
+
+
+
+
+
+* ListView BaseAdapter getView¤]¥i¥ÎconvertView+ViewHolder¹F¨ìRecyclerªº®ÄªG
+* convertView = mInflater.inflate(R.layout.item1, null);
+  Recycler­Y¨S¦³convertView (list_item.xml)¡A¤~²£¥ÍconvertView¡A¦A©I¥sfindViewbyId
+  convertView:¤j®e¾¹¡AfindViewbyId:¤p®e¾¹
+  
+* RecyclerView±NgetView§ï¬°onCreateViewHolder©MonBindViewHolder
+  onCreateViewHolder-->¨ú±oView
+  onBindViewHolder-->±NÅã¥Ü¤º®e³]©w¨ìView
+* onClickListener¼g¦bViewHolder¸Ì¤ñ¸û¦n
+* LayoutManager
+  --LinearLayoutManagerŠE
+    --Vertical & Horizontal
+  --StaggeredGridLayoutManager
+  --GridLayoutManager
+* Add and Delete
+* Item Animator
+* Item Decoration
+* website
+http://www.cnblogs.com/xiaowenji/archive/2010/12/08/1900579.html
+http://jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1021/1815.html
+  

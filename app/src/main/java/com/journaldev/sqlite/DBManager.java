@@ -54,13 +54,14 @@ public class DBManager {
         database = dbHelper.getReadableDatabase();
         Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, null, null, null, null, null, null, null);
         ArrayList<Information> result = new ArrayList<Information>();
-
+        int image = R.drawable.ic_number2; // tbc.....
         Information information;
         if (cursor.getCount() > 0) {
             for (int i = 0; i < cursor.getCount(); i++) {
                 cursor.moveToNext();
                 information = new Information();
-                information.iconId= cursor.getInt(0);
+                information.icon = image;
+                information.sqlid= cursor.getInt(0);
                 information.item1 = cursor.getString(1);
                 information.item2 = cursor.getString(2);
                 information.date = cursor.getString(3);

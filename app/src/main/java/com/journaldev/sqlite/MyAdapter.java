@@ -29,6 +29,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private LayoutInflater inflater;
     private Context context;
     ArrayList<Information> data;
+
     public MyAdapter(Context context, ArrayList<Information> data){
         this.context=context;
         inflater = LayoutInflater.from(context);
@@ -51,7 +52,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Information current=data.get(position);
-        holder.icon.setImageResource(current.iconId);
+        holder.icon.setImageResource(current.icon);
+        holder.holderId.setText(String.valueOf(current.sqlid)); // holder.holderId.setText(" "+current.sqlid)
         holder.holderItem1.setText(current.item1);
         holder.holderItem2.setText(current.item2);
         holder.holderItem3.setText(current.date);
@@ -66,6 +68,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView icon;
+        TextView holderId;
         TextView holderItem1;
         TextView holderItem2;
         TextView holderItem3;
@@ -73,6 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             super(itemView);
             icon = (ImageView) itemView.findViewById(R.id.listIcon);
             icon.setOnClickListener(this);
+            holderId = (TextView) itemView.findViewById(R.id.sql_Id);
             holderItem1 = (TextView) itemView.findViewById(R.id.listText1);
             holderItem2 = (TextView) itemView.findViewById(R.id.listText2);
             holderItem3 = (TextView) itemView.findViewById(R.id.listText3);
