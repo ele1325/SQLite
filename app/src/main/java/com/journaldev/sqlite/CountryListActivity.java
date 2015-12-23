@@ -73,7 +73,7 @@ public class CountryListActivity extends AppCompatActivity {
 //                String item2 = textView2.getText().toString();
 //                String date = dateTextView.getText().toString();
 //
-//                Intent modify_intent = new Intent(getApplicationContext(), ModifyCountryActivity.class);
+//               Intent modify_intent = new Intent(getApplicationContext(), ModifyCountryActivity.class);
 //                modify_intent.putExtra("id", id);
 //                modify_intent.putExtra("item1", item1);
 //                modify_intent.putExtra("item2", item2);
