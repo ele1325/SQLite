@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollModify"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,14 +16,24 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:ems="1"
-        android:hint="@string/enter_title" />
+        android:hint="@string/enter_title"
+        />
 
     <EditText
         android:id="@+id/modify_edittext2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="1"
-        android:hint="@string/enter_desc"
+        android:hint="店家?"
+        android:inputType="textMultiLine"
+        android:minLines="2" >
+    </EditText>
+    <EditText
+        android:id="@+id/modify_edittext3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="1"
+        android:hint="品牌?"
         android:inputType="textMultiLine"
         android:minLines="2" >
     </EditText>
@@ -27,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="1"
-        android:hint="@string/enter_desc"
+        android:hint="日期?"
         android:inputType="textMultiLine"
         android:minLines="2" >
     </EditText>
@@ -44,14 +59,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/btn_update" />
-
+            android:text="更新" />
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="取消" />
         <Button
             android:id="@+id/btn_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/btn_delete" />
+            android:text="刪除" />
     </LinearLayout>
 
 </LinearLayout>
+</ScrollView>

@@ -32,16 +32,17 @@ public class DBManager {
         dbHelper.close();
     }
 
-    public void insert(String item1, String item2, String date) {
+    public void insert(String item1, String item2, String item3, String date) {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.ITEM1, item1);
         contentValue.put(DatabaseHelper.ITEM2, item2);
+        contentValue.put(DatabaseHelper.ITEM3, item3);
         contentValue.put(DatabaseHelper.DATE, date);
         database.insert(DatabaseHelper.TABLE_NAME, null, contentValue);
     }
 
     public Cursor fetch() {
-        String[] columns = new String[] { DatabaseHelper._ID, DatabaseHelper.ITEM1, DatabaseHelper.ITEM2, DatabaseHelper.DATE };
+        String[] columns = new String[] { DatabaseHelper._ID, DatabaseHelper.ITEM1, DatabaseHelper.ITEM2, DatabaseHelper.ITEM3, DatabaseHelper.DATE };
 
         Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, columns, null, null, null, null, null);
         if (cursor != null) {
@@ -54,7 +55,7 @@ public class DBManager {
         database = dbHelper.getReadableDatabase();
         Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, null, null, null, null, null, null, null);
         ArrayList<Information> result = new ArrayList<Information>();
-        int image = R.drawable.ic_number2; // tbc.....
+        int image = R.drawable.tissue_yahui; // tbc.....
         Information information;
         if (cursor.getCount() > 0) {
             for (int i = 0; i < cursor.getCount(); i++) {
@@ -64,7 +65,8 @@ public class DBManager {
                 information.sqlid= cursor.getInt(0);
                 information.item1 = cursor.getString(1);
                 information.item2 = cursor.getString(2);
-                information.date = cursor.getString(3);
+                information.item3 = cursor.getString(3);
+                information.date = cursor.getString(4);
 
                 result.add(information);
             }
@@ -75,10 +77,11 @@ public class DBManager {
         return result;
     }
 
-    public int update(long _id, String item1, String item2, String date) {
+    public int update(long _id, String item1, String item2, String item3, String date) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.ITEM1, item1);
         contentValues.put(DatabaseHelper.ITEM2, item2);
+        contentValues.put(DatabaseHelper.ITEM3, item3);
         contentValues.put(DatabaseHelper.DATE, date);
         int i = database.update(DatabaseHelper.TABLE_NAME, contentValues, DatabaseHelper._ID + " = " + _id, null);
         return i;

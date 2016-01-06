@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Expenses</string>
+    <string name="app_name">一抽幾多錢</string>
     <string name="enter_name">Country Name</string>
     <string name="add_record">Add Record</string>
     <string name="btn_update">Update</string>
     <string name="btn_delete">Delete</string>
     <string name="empty_list_text">No records found</string>
-    <string name="enter_desc">說明</string>
-    <string name="enter_title">費用</string>
+    <string name="enter_title">價格?(必填)</string>
+    <string name="enter_desc">幾包</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

@@ -10,23 +10,24 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Table Name
-    public static final String TABLE_NAME = "Table1";
+    public static final String TABLE_NAME = "Table3";
 
     // Table columns
     public static final String _ID = "_id";
     public static final String ITEM1 = "item1";
     public static final String ITEM2 = "item2";
+    public static final String ITEM3 = "item3";
     public static final String DATE = "date";
 
     // Database Information
-    static final String DB_NAME = "SQLitePractice.DB";
+    static final String DB_NAME = "SQLitePractice1.DB";
 
     // database version
-    static final int DB_VERSION = 1;
+    static final int DB_VERSION = 2;
 
     // Creating table query
     private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ITEM1 + " TEXT NOT NULL, " + ITEM2 + " TEXT, " + DATE + " TEXT);";
+            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ITEM1 + " TEXT NOT NULL, " + ITEM2 + " TEXT, " + ITEM3 + " TEXT, " + DATE + " TEXT);";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

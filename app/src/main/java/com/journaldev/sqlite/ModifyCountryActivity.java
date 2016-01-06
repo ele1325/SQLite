@@ -15,8 +15,11 @@ public class ModifyCountryActivity extends Activity implements OnClickListener {
 
     private EditText modifyEditText1;
     private EditText modifyEditText2;
+    private EditText modifyEditText3;
+    private EditText modifyEditText4;
+    private EditText modifyEditText5;
     private EditText modifyDateEditText;
-    private Button updateBtn, deleteBtn;
+    private Button updateBtn, cancelBtn, deleteBtn;
 
     private long _id;
 
@@ -26,7 +29,7 @@ public class ModifyCountryActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setTitle("Modify Record");
+        setTitle("更新/刪除資料?");
 
         setContentView(R.layout.activity_modify_record);
 
@@ -35,22 +38,27 @@ public class ModifyCountryActivity extends Activity implements OnClickListener {
 
         modifyEditText1 = (EditText) findViewById(R.id.modify_edittext1);
         modifyEditText2 = (EditText) findViewById(R.id.modify_edittext2);
+        modifyEditText3 = (EditText) findViewById(R.id.modify_edittext3);
         modifyDateEditText = (EditText) findViewById(R.id.modify_date_edittext);
         updateBtn = (Button) findViewById(R.id.btn_update);
+        cancelBtn = (Button) findViewById(R.id.btn_cancel);
         deleteBtn = (Button) findViewById(R.id.btn_delete);
 
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
         String item1 = intent.getStringExtra("item1");
         String item2 = intent.getStringExtra("item2");
+        String item3 = intent.getStringExtra("item3");
         String date = intent.getStringExtra("date");
 
         _id = Long.parseLong(id);
 
         modifyEditText1.setText(item1);
         modifyEditText2.setText(item2);
+        modifyEditText3.setText(item3);
         modifyDateEditText.setText(date);
         updateBtn.setOnClickListener(this);
+        cancelBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
     }
 
@@ -58,14 +66,17 @@ public class ModifyCountryActivity extends Activity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_update:
-                String title = modifyEditText1.getText().toString();
-                String desc = modifyEditText2.getText().toString();
+                String item1 = modifyEditText1.getText().toString();
+                String item2 = modifyEditText2.getText().toString();
+                String item3 = modifyEditText3.getText().toString();
                 String date = modifyDateEditText.getText().toString();
 
-                dbManager.update(_id, title, desc, date);
+                dbManager.update(_id, item1, item2, item3, date);
                 this.returnHome();
                 break;
-
+            case R.id.btn_cancel:
+                this.returnHome();
+                break;
             case R.id.btn_delete:
                 dbManager.delete(_id);
                 this.returnHome();

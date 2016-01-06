@@ -30,6 +30,7 @@ public class CountryListActivity extends AppCompatActivity {
     private MyAdapter recyclerViewAdapter;
     private RecyclerView recyclerView;
     private ArrayList<Information> getAllData;
+    private TextView noRecordsFound;
 
     final String[] from = new String[] { DatabaseHelper._ID,
             DatabaseHelper.ITEM1, DatabaseHelper.ITEM2, DatabaseHelper.DATE };
@@ -41,6 +42,7 @@ public class CountryListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.fragment_emp_list);
+        noRecordsFound = (TextView) findViewById(R.id.empty);
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -51,13 +53,18 @@ public class CountryListActivity extends AppCompatActivity {
         dbManager.open();
         Cursor cursor = dbManager.fetch();
         getAllData = dbManager.getAll();
-
-        recyclerView = (RecyclerView) findViewById(R.id.drawerList);
-        recyclerViewAdapter = new MyAdapter(this, getAllData);
-        recyclerView.setAdapter(recyclerViewAdapter);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        //linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        if (getAllData.size()>0) {
+            noRecordsFound.setVisibility(View.GONE);
+            recyclerView = (RecyclerView) findViewById(R.id.drawerList);
+            recyclerViewAdapter = new MyAdapter(this, getAllData);
+            recyclerView.setAdapter(recyclerViewAdapter);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            //linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+        } else {
+            noRecordsFound.setVisibility(View.VISIBLE);
+        }
     }
 
     public static List<Information> getData(){

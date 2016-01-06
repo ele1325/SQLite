@@ -8,5 +8,6 @@ public class Information {
     int sqlid;
     String item1;
     String item2;
+    String item3;
     String date;
 }

@@ -12,7 +12,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/tissue_yahui"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <!--This meta-data tag is required to use Google Play Services.-->
@@ -31,10 +31,12 @@
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
             android:name=".ModifyCountryActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:label="@string/app_name" />
 
         <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
             android:name=".AddCountryActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:label="@string/app_name" />
         <!--Include the AdActivity configChanges and theme. -->
         <activity android:name="com.google.android.gms.ads.AdActivity"

@@ -9,22 +9,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:src="@drawable/ic_number1"/>
+        android:src="@drawable/ic_number1"
+        android:visibility="gone"/>
     <TextView
         android:padding="8dp"
         android:id="@+id/sql_Id"
         android:layout_gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#E00"
-        android:text="Dummy Text"/>
+        android:textColor="@color/colorTextPrimary"
+        android:text="Dummy Text"
+        android:visibility="gone"/>
     <TextView
         android:padding="8dp"
         android:id="@+id/listText1"
         android:layout_gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#E00"
+        android:textColor="@color/colorTextPrimary"
         android:text="Dummy Text"/>
     <TextView
         android:padding="8dp"
@@ -32,7 +34,7 @@
         android:layout_gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#E00"
+        android:textColor="@color/colorTextPrimary"
         android:text="Dummy Text"/>
     <TextView
         android:padding="8dp"
@@ -40,10 +42,16 @@
         android:layout_gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#E00"
+        android:textColor="@color/colorTextPrimary"
         android:text="Dummy Text"/>
-
-
+    <TextView
+        android:padding="8dp"
+        android:id="@+id/DateText"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorTextPrimary"
+        android:text="Dummy Text"/>
 
 
 </LinearLayout>

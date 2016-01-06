@@ -57,7 +57,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.holderId.setText(String.valueOf(current.sqlid)); // holder.holderId.setText(" "+current.sqlid)
         holder.holderItem1.setText(current.item1);
         holder.holderItem2.setText(current.item2);
-        holder.holderItem3.setText(current.date);
+        holder.holderItem3.setText(current.item3);
+        holder.holderDate.setText(current.date);
         Log.i("TestLog", "onBindViewHolder---" + ++COUNT+ "Position" + position);
 
     }
@@ -73,6 +74,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         TextView holderItem1;
         TextView holderItem2;
         TextView holderItem3;
+        TextView holderDate;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -83,6 +85,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             holderItem1 = (TextView) itemView.findViewById(R.id.listText1);
             holderItem2 = (TextView) itemView.findViewById(R.id.listText2);
             holderItem3 = (TextView) itemView.findViewById(R.id.listText3);
+            holderDate = (TextView) itemView.findViewById(R.id.DateText);
         }
 
         @Override
@@ -91,23 +94,26 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
             dbManager = new DBManager(view.getContext());
             dbManager.open();
-            TextView idTextView;
-            idTextView = (TextView) view.findViewById(R.id.sql_Id);
+
+            TextView idTextView = (TextView) view.findViewById(R.id.sql_Id);
             TextView textView1 = (TextView) view.findViewById(R.id.listText1);
             TextView textView2 = (TextView) view.findViewById(R.id.listText2);
-            TextView dateTextView = (TextView) view.findViewById(R.id.listText3);
+            TextView textView3 = (TextView) view.findViewById(R.id.listText3);
+            TextView dateTextView = (TextView) view.findViewById(R.id.DateText);
             //Log.i("TestLog", "v---" + "  "+ R.id.id);
             Log.i("TestLog", "v---" + "  "+ view);
             Log.i("TestLog", "idView---" + "  "+ idTextView);
             String id = idTextView.getText().toString();
             String item1 = textView1.getText().toString();
             String item2 = textView2.getText().toString();
+            String item3 = textView3.getText().toString();
             String date = dateTextView.getText().toString();
 
             Intent modify_intent = new Intent(context.getApplicationContext(), ModifyCountryActivity.class);
             modify_intent.putExtra("id", id);
             modify_intent.putExtra("item1", item1);
             modify_intent.putExtra("item2", item2);
+            modify_intent.putExtra("item3", item3);
             modify_intent.putExtra("date", date);
 
             context.startActivity(modify_intent);
